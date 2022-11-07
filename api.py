@@ -1,6 +1,6 @@
 import os
 from dotenv import load_dotenv
-from flask import Flask, request, abort, render_template
+from flask import Flask, request, abort
 from linebot import LineBotApi, WebhookHandler
 from linebot.exceptions import InvalidSignatureError
 from linebot.models import MessageEvent, TextMessage, TextSendMessage
@@ -20,7 +20,7 @@ handler = WebhookHandler(CHANNEL_SECRET)
 # test
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return '<h1>Hello World!</h1>'
 
 
 # endpoint from linebot
