@@ -51,6 +51,10 @@ def handle_message(event):
         event.reply_token,
         TextSendMessage(text=f'{event.message.text}と入力されました。')
     )
+    line_bot_api.reply_message(
+        event.reply_token,
+        TextSendMessage(text=event.message.text)
+    )
 
 
 if __name__ == '__main__':
