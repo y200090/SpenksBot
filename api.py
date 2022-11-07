@@ -17,7 +17,7 @@ line_bot_api = LineBotApi(CHANNEL_ACCESS_TOKEN)
 handler = WebhookHandler(CHANNEL_SECRET)
 
 
-# # test endpoint
+# # test
 # @app.route('/')
 # def index():
 #     return '<h1>Hello World!</h1>'
