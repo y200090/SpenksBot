@@ -1,5 +1,6 @@
-import os
-from dotenv import load_dotenv
+import os, requests, time
+# from dotenv import load_dotenv
+from bs4 import BeautifulSoup
 from flask import Flask, request, abort
 from linebot import LineBotApi, WebhookHandler
 from linebot.exceptions import InvalidSignatureError
@@ -9,7 +10,7 @@ from linebot.models import MessageEvent, TextMessage, TextSendMessage
 app = Flask(__name__)
 
 
-load_dotenv()
+# load_dotenv()
 
 CHANNEL_ACCESS_TOKEN = os.environ['CHANNEL_ACCESS_TOKEN']
 CHANNEL_SECRET = os.environ['CHANNEL_SECRET']
@@ -46,6 +47,10 @@ def callback():
 # handle message from LINE
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
+    line_bot_api.reply_message(
+        event.reply_token,
+        TextSendMessage(text=event.message.text)
+    )
     line_bot_api.reply_message(
         event.reply_token,
         TextSendMessage(text=event.message.text)
